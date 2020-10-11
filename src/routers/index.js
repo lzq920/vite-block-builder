@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import commonRoutes from "./common";
+import store from "../stores";
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -15,10 +16,15 @@ const router = createRouter({
     ],
 });
 router.beforeEach((to, from, next) => {
-    console.log(to);
-    next();
+    if (to.meta.requiredAuth) {
+        if (store.state.userToken) {
+            next();
+        } else {
+            next("/login");
+        }
+    } else {
+        next();
+    }
 });
-router.afterEach((to, from) => {
-    console.log(from);
-});
+router.afterEach((to, from) => {});
 export default router;

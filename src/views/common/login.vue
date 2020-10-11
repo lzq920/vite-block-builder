@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Login</h1>
+        <h1 @click="login">Login</h1>
     </div>
 </template>
 
@@ -13,10 +13,14 @@
         },
         methods: {
             async login() {
-                const response = await user.login({
-                    username: "123",
-                    password: "123456",
+                // const response = await user.login({
+                //     username: "123",
+                //     password: "123456",
+                // });
+                this.$router.push({
+                    name: "index",
                 });
+                this.$store.dispatch("setUserToken", "123123");
             },
         },
     };

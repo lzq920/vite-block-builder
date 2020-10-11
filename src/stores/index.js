@@ -2,18 +2,18 @@ import { createStore } from "vuex";
 export default createStore({
     state() {
         return {
-            count: 1,
+            userToken: "",
         };
     },
     modules: {},
     mutations: {
-        addCount(state, value) {
-            state.count = value;
+        setUserToken(state, value) {
+            state.userToken = value;
         },
     },
     actions: {
-        addCount({ commit }, value) {
-            commit("addCount", value);
+        setUserToken({ commit }, value) {
+            commit("setUserToken", value);
         },
     },
 });

@@ -5,6 +5,7 @@
         <h3>当前接口：{{ api }}</h3>
         <h3>{{ $store.state.count }}</h3>
         <h3>{{ cdn }}</h3>
+        <h3 @click="logout">当前登录用户：{{ $store.state.userToken }}</h3>
     </div>
 </template>
 
@@ -24,19 +25,22 @@
             const onClick = () => {
                 console.log("hhh");
             };
-            onMounted(() => {
-                store.dispatch("addCount", 2333);
-            });
+            const logout = () => {
+                store.dispatch("setUserToken", null);
+                router.replace({
+                    name: "login",
+                });
+            };
+            onMounted(() => {});
             return {
                 text,
                 env,
                 api,
                 onClick,
+                logout,
             };
         },
-        mounted() {
-            console.log(this.cdn);
-        },
+        mounted() {},
     };
 </script>
 <style scoped>
