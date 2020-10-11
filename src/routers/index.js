@@ -17,7 +17,7 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
     if (to.meta.requiredAuth) {
-        if (store.state.userToken) {
+        if (!!store.state.userToken) {
             next();
         } else {
             next("/login");
