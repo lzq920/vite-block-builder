@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import commonRoutes from "./common";
 import store from "../stores";
+import indexView from "../views/index.vue";
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -11,7 +12,7 @@ const router = createRouter({
             meta: {
                 requiredAuth: true,
             },
-            component: () => import("../views/index.vue"),
+            component: indexView,
         },
     ],
 });

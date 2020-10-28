@@ -8,5 +8,5 @@ export default {
         });
         app.mixin(mixin);
         app.config.globalProperties.lodash = lodash;
-    }
+    },
 };
