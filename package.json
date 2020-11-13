@@ -7,6 +7,7 @@
         "build:test": "vite build --mode development"
     },
     "dependencies": {
+        "@cloudbase/js-sdk": "^1.3.3",
         "ant-design-vue": "^2.0.0-beta.9",
         "axios": "^0.21.0",
         "lodash": "^4.17.20",

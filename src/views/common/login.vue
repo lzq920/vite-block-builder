@@ -20,7 +20,6 @@
                 this.$router.push({
                     name: "index",
                 });
-                this.$store.dispatch("setUserToken", "123123");
             },
         },
     };

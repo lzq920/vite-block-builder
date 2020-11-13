@@ -5,9 +5,12 @@
 </template>
 
 <script>
+    import cloudbase from "../../hooks/cloudbase";
     export default {
         name: "Register",
         setup() {
+            const {app} = cloudbase();
+            console.log(app);
             return {};
         },
     };
