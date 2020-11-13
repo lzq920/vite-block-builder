@@ -1,9 +1,7 @@
 import cloudbase from "@cloudbase/js-sdk";
-export default function cloudbase(){    
+export function useCloudBase() {
     const app = cloudbase.init({
-        env:"cloud-dev-1gokvxnv79e12706"
+        env: "cloud-dev-1gokvxnv79e12706"
     });
-    return {
-        app
-    }
+    return app;
 }
