@@ -20,7 +20,7 @@ export default {
           .signUpWithEmailAndPassword(email, password);
         message.info("注册邮件已经发送到您的邮箱，请注意查收！");
       } catch (error) {
-        console.log(error);
+        message.error(error.message);
       }
     };
     return {
