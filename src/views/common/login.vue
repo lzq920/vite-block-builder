@@ -1,28 +1,66 @@
 <template>
-    <div>
-        <h1 @click="login">Login</h1>
-    </div>
+  <a-form layout="inline" :model="formInline" @submit="handleSubmit">
+    <a-form-item>
+      <a-input v-model:value="formInline.email" placeholder="Email"> </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-input
+        v-model:value="formInline.password"
+        type="password"
+        placeholder="Password"
+      >
+      </a-input>
+    </a-form-item>
+    <a-form-item>
+      <a-button
+        type="primary"
+        html-type="submit"
+        :disabled="formInline.email === '' || formInline.password === ''"
+      >
+        Log in
+      </a-button>
+    </a-form-item>
+  </a-form>
 </template>
 
 <script>
-    import { user } from "../../interfaces";
-    export default {
-        name: "Login",
-        setup() {
-            return {};
-        },
-        methods: {
-            async login() {
-                // const response = await user.login({
-                //     username: "123",
-                //     password: "123456",
-                // });
-                this.$router.push({
-                    name: "index",
-                });
-            },
-        },
+import { reactive } from "vue";
+import { user } from "../../interfaces";
+import { message } from "ant-design-vue";
+import { useCloudBase } from "../../hooks/cloudbase";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+export default {
+  name: "Login",
+  setup() {
+    const formInline = reactive({
+      email: "",
+      password: "",
+    });
+    const app = useCloudBase();
+    const store = useStore();
+    const router = useRouter();
+    const handleSubmit = async () => {
+      if (formInline.email === "" || formInline.password === "") {
+        return message.error("邮箱或者密码为空");
+      } else {
+        try {
+          const response = await app
+            .auth({
+              persistence: "local",
+            })
+            .signInWithEmailAndPassword(formInline.email, formInline.password);
+          router.push({
+            name: "index",
+          });
+        } catch (error) {
+          message.error(error.message);
+        }
+      }
     };
+    return { formInline, handleSubmit };
+  },
+};
 </script>
 
 <style></style>

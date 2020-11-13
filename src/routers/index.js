@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import commonRoutes from "./common";
-import store from "../stores";
 import indexView from "../views/index.vue";
+import { useCloudBase } from "../hooks/cloudbase";
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -17,8 +17,9 @@ const router = createRouter({
     ],
 });
 router.beforeEach((to, from, next) => {
+    const app = useCloudBase();
     if (to.meta.requiredAuth) {
-        if (!!store.state.userToken) {
+        if (app.auth().hasLoginState()) {
             next();
         } else {
             next("/login");
@@ -27,5 +28,5 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
-router.afterEach((to, from) => {});
+router.afterEach((to, from) => { });
 export default router;
