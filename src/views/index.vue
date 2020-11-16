@@ -48,22 +48,21 @@
   </a-layout>
 </template>
 <script>
-import { onMounted, reactive, ref, toRefs } from "vue";
-import { useCloudBase } from "../hooks/cloudbase";
+import { onMounted, reactive, ref, toRefs, inject } from "vue";
 import { user } from "../interfaces";
 import { useRouter } from "vue-router";
 export default {
   components: {},
   setup() {
-    const app = useCloudBase();
+    const cloud = inject("cloud");
     const router = useRouter();
     let userInfo = ref({});
     const selectedKeys = reactive(["4"]);
     const getUserInfo = async () => {
-      userInfo.value = await app.auth().getCurrenUser();
+      userInfo.value = await cloud.auth().getCurrenUser();
     };
     const logout = async () => {
-      await app.auth().signOut();
+      await cloud.auth().signOut();
       router.replace("/login");
     };
     const menuSelect = ({ item, key, selectedKeys }) => {

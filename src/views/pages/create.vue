@@ -15,13 +15,12 @@
 </template>
 
 <script>
-import { reactive } from "vue";
-import { useCloudBase } from "../../hooks/cloudbase";
+import { inject, reactive } from "vue";
 import { message } from "ant-design-vue";
 export default {
   setup() {
-    const app = useCloudBase();
-    const db = app.database();
+    const cloud = inject("cloud");
+    const db = cloud.database();
     const collection = db.collection("page");
     const page = reactive({
       title: "",

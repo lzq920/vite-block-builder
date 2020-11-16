@@ -24,10 +24,9 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive, inject } from "vue";
 import { user } from "../../interfaces";
 import { message } from "ant-design-vue";
-import { useCloudBase } from "../../hooks/cloudbase";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
@@ -37,7 +36,7 @@ export default {
       email: "",
       password: "",
     });
-    const app = useCloudBase();
+    const cloud = inject("cloud");
     const store = useStore();
     const router = useRouter();
     const handleSubmit = async () => {
@@ -45,7 +44,7 @@ export default {
         return message.error("邮箱或者密码为空");
       } else {
         try {
-          const response = await app
+          const response = await cloud
             .auth({
               persistence: "local",
             })

@@ -20,13 +20,12 @@
 </template>
 
 <script>
-import { onMounted, reactive } from "vue";
-import { useCloudBase } from "../../hooks/cloudbase";
+import { inject, onMounted, reactive } from "vue";
 export default {
   setup() {
     let data = reactive([]);
-    const app = useCloudBase();
-    const db = app.database();
+    const cloud = inject("cloud");
+    const db = cloud.database();
     const collection = db.collection("page");
     const getPageList = async () => {
       const response = await collection.get();
