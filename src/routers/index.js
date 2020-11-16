@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import commonRoutes from "./common";
 import indexView from "../views/index.vue";
-import { useCloudBase } from "../hooks/cloudbase";
+import { useCloudBase } from "../hooks/useCloudBase";
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [

@@ -3,7 +3,7 @@
 </template>
 <script>
 import { provide } from "vue";
-import { useCloudBase } from "./hooks/cloudbase";
+import { useCloudBase } from "./hooks/useCloudBase";
 export default {
   name: "App",
   components: {},
