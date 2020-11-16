@@ -13,6 +13,21 @@ const router = createRouter({
                 requiredAuth: true,
             },
             component: indexView,
+            children: [{
+                name: "pageList",
+                path: "/pagelist",
+                meta: {
+                    requiredAuth: true
+                },
+                component: () => import("../views/pages/index.vue")
+            }, {
+                name: "pageCreate",
+                path: "/pagecreate",
+                meta: {
+                    requiredAuth: true
+                },
+                component: () => import("../views/pages/create.vue")
+            }]
         },
     ],
 });
