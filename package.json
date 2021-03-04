@@ -14,17 +14,6 @@
         "vue-router": "^4.0.4",
         "vuex": "^4.0.0"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,vue,jsx}": [
-            "eslint --fix src/**/*.{js,vue,jsx}",
-            "git add"
-        ]
-    },
     "devDependencies": {
         "@vitejs/plugin-vue": "^1.1.5",
         "@vue/compiler-sfc": "^3.0.7",
@@ -42,5 +31,16 @@
         "postcss": "^8.2.7",
         "tailwindcss": "^2.0.3",
         "vite": "^2.0.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,vue,jsx}": [
+            "eslint --fix",
+            "git add"
+        ]
     }
 }
