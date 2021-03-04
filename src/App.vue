@@ -7,7 +7,7 @@ export default {
   components: {},
   setup () {
     const item = 1
-    console.log(item)
+    console.log(item, 1)
   }
 }
 </script>
