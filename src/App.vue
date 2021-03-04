@@ -8,6 +8,7 @@ export default {
   setup () {
     const item = 1
     console.log(item, 1)
+    debugger
   }
 }
 </script>
