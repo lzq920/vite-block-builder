@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            cdn: "cdn.qiniu.com",
+            cdn: "https://cdn.qiniu.com",
         };
     },
 };
