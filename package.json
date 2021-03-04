@@ -20,7 +20,7 @@
         }
     },
     "lint-staged": {
-        "*.js": ["eslint --fix src/**/*.{js,vue,jsx}", "git add"]
+        "*.{js,jsx,vue}": ["eslint --fix src/**/*.{js,vue,jsx}", "git add"]
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^1.1.5",
