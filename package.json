@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "vite --mode development",
         "build": "vite build --mode production",
-        "development": "vite build --mode development"
+        "development": "vite build --mode development",
+        "lint": "eslint --fix src/**/*.{js,vue,jsx}"
     },
     "dependencies": {
         "axios": "^0.21.1",
@@ -13,14 +14,28 @@
         "vue-router": "^4.0.4",
         "vuex": "^4.0.0"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": ["eslint --fix src/**/*.{js,vue,jsx}", "git add"]
+    },
     "devDependencies": {
         "@vitejs/plugin-vue": "^1.1.5",
         "@vue/compiler-sfc": "^3.0.7",
         "autoprefixer": "^10.2.4",
         "eslint": "^7.21.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.3.1",
         "eslint-plugin-vue": "^7.7.0",
+        "husky": "^5.1.3",
         "less": "^4.0.0",
         "less-loader": "8",
+        "lint-staged": "^10.5.4",
         "postcss": "^8.2.7",
         "tailwindcss": "^2.0.3",
         "vite": "^2.0.5"

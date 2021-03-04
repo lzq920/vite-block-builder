@@ -1,18 +1,18 @@
 export default [
-    {
-        name: "login",
-        path: "/login",
-        meta: {
-            requiredAuth: false,
-        },
-        component: () => import("../views/common/login.vue"),
+  {
+    name: 'login',
+    path: '/login',
+    meta: {
+      requiredAuth: false
     },
-    {
-        name: "register",
-        path: "/register",
-        meta: {
-            requiredAuth: false,
-        },
-        component: () => import("../views/common/register.vue"),
+    component: () => import('../views/common/login.vue')
+  },
+  {
+    name: 'register',
+    path: '/register',
+    meta: {
+      requiredAuth: false
     },
-];
+    component: () => import('../views/common/register.vue')
+  }
+]

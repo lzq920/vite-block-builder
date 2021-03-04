@@ -1,23 +1,21 @@
 <template>
-  <div>
-
-  </div>
+  <div />
 </template>
 
 <script>
-import {onMounted, reactive} from "vue";
+import { onMounted, reactive } from 'vue'
 
 export default {
-  setup() {
-    let data = reactive([]);
+  setup () {
+    const data = reactive([])
     const getPageList = async () => {
-    };
+    }
     onMounted(() => {
-      getPageList();
-    });
-    return {data};
-  },
-};
+      getPageList()
+    })
+    return { data }
+  }
+}
 </script>
 
 <style>

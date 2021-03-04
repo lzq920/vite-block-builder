@@ -1,22 +1,22 @@
 <template>
-
+  <div>123</div>
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive } from 'vue'
 export default {
-  name: "Login",
-  setup() {
+  name: 'Login',
+  setup () {
     const formInline = reactive({
-      email: "",
-      password: "",
-    });
+      email: '',
+      password: ''
+    })
     const handleSubmit = async () => {
 
-    };
-    return { formInline, handleSubmit };
-  },
-};
+    }
+    return { formInline, handleSubmit }
+  }
+}
 </script>
 
 <style></style>

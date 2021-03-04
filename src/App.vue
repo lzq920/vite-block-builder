@@ -1,11 +1,11 @@
 <template>
-  <router-view class="flex" />
+  <router-view />
 </template>
 <script>
 export default {
-  name: "App",
+  name: 'App',
   components: {},
-  setup() {
-  },
-};
+  setup () {
+  }
+}
 </script>
