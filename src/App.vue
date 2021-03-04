@@ -1,5 +1,5 @@
 <template>
-  <router-view class="flex"></router-view>
+  <router-view class="flex" />
 </template>
 <script>
 export default {
