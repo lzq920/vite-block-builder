@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "dev": "vite --mode development",
-        "build:prod": "vite build --mode production",
-        "build:test": "vite build --mode development"
+        "build": "vite build --mode production",
+        "development": "vite build --mode development"
     },
     "dependencies": {
         "axios": "^0.21.1",
@@ -14,9 +14,13 @@
         "vuex": "^4.0.0"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^1.1.5",
         "@vue/compiler-sfc": "^3.0.7",
+        "autoprefixer": "^10.2.4",
         "less": "^4.0.0",
         "less-loader": "8",
+        "postcss": "^8.2.7",
+        "tailwindcss": "^2.0.3",
         "vite": "^2.0.5"
     }
 }

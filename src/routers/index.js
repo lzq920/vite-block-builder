@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import {createRouter, createWebHashHistory} from "vue-router";
 import commonRoutes from "./common";
 import indexView from "../views/index.vue";
-import { useCloudBase } from "../hooks/useCloudBase";
+
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -14,15 +14,15 @@ const router = createRouter({
             },
             component: indexView,
             children: [{
-                name: "pageList",
-                path: "/pagelist",
+                name: "pagesList",
+                path: "/pages/list",
                 meta: {
                     requiredAuth: true
                 },
                 component: () => import("../views/pages/index.vue")
             }, {
-                name: "pageCreate",
-                path: "/pagecreate",
+                name: "pagesCreate",
+                path: "/pages/create",
                 meta: {
                     requiredAuth: true
                 },
@@ -32,16 +32,7 @@ const router = createRouter({
     ],
 });
 router.beforeEach((to, from, next) => {
-    const app = useCloudBase();
-    if (to.meta.requiredAuth) {
-        if (app.auth().hasLoginState()) {
-            next();
-        } else {
-            next("/login");
-        }
-    } else {
         next();
-    }
 });
 router.afterEach((to, from) => { });
 export default router;
