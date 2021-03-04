@@ -42,5 +42,6 @@
             "eslint --fix src/**/*.{js,vue,jsx}",
             "git add"
         ]
-    }
+    },
+    "license": "MIT"
 }
