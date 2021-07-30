@@ -2,21 +2,24 @@ export default [{
   name: 'index',
   path: '/',
   meta: {
-    requiredAuth: true
+    requiredAuth: true,
+    role: ['admin']
   },
   component: () => import('../views/index.vue'),
   children: [{
     name: 'pagesList',
     path: '/pages/list',
     meta: {
-      requiredAuth: true
+      requiredAuth: true,
+      role: ['admin']
     },
     component: () => import('../views/pages/index.vue')
   }, {
     name: 'pagesCreate',
     path: '/pages/create',
     meta: {
-      requiredAuth: true
+      requiredAuth: true,
+      role: ['admin']
     },
     component: () => import('../views/pages/create.vue')
   }]

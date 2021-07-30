@@ -24,5 +24,5 @@ export function logout () {
  * @returns {Promise}
  */
 export function getUserInfo (params) {
-  return axios.get('/user/ingo', { params })
+  return axios.get('/user/info', { params })
 }
