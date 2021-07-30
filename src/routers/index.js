@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import commonRoutes from './common'
-import authRouter from './authRouter'
+import authRoutes from './other'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     ...commonRoutes,
-    ...authRouter
+    ...authRoutes
   ]
 })
 router.beforeEach((to, from, next) => {

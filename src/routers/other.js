@@ -1,11 +1,10 @@
-import indexView from '../views'
 export default [{
   name: 'index',
   path: '/',
   meta: {
     requiredAuth: true
   },
-  component: indexView,
+  component: () => import('../views/index.vue'),
   children: [{
     name: 'pagesList',
     path: '/pages/list',
