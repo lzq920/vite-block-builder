@@ -1,9 +1,12 @@
 <template>
-  <div />
+  <div>
+    {{ title }}
+  </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
+
 export default {
   setup () {
     const page = reactive({
@@ -14,7 +17,7 @@ export default {
 
     }
     return {
-      page,
+      ...toRefs(page),
       submit
     }
   }
