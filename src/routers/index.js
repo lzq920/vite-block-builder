@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import commonRoutes from './commonRoutes'
 import store from '../stores'
+import api from '../interfaces'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -9,8 +10,8 @@ const router = createRouter({
   ]
 })
 router.beforeEach(async (to, from, next) => {
-  const hasToken = store.getters['user/token']
-  const hasRole = store.getters['role/role'] && store.getters['role/role'].length
+  const hasToken = Boolean(store.getters['user/token'])
+  const hasRole = Boolean(store.getters['role/role'] && store.getters['role/role'].length)
   if (hasToken) {
     if (to.name === 'login') {
       next({
@@ -20,23 +21,24 @@ router.beforeEach(async (to, from, next) => {
       if (hasRole) {
         next()
       } else {
+        const { data } = await api.getUserInfo()
+        await store.dispatch('user/setUser', data)
+        await store.dispatch('role/setRole', data.role)
         const accessRoute = await store.dispatch('router/getRoutes')
-        router.addRoute(accessRoute)
+        router.addRoute(...accessRoute)
         next({
-          ...to,
+          path: to.path,
           replace: true
         })
       }
     }
   } else {
-    const whiteList = commonRoutes.map(item => item.name)
-    if (whiteList.includes(to.name)) {
+    const whiteList = commonRoutes.map(item => item.path)
+    if (whiteList.includes(to.path)) {
       next()
     } else {
       next('/login')
     }
   }
-})
-router.afterEach((to, from) => {
 })
 export default router

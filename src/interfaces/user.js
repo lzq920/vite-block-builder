@@ -7,7 +7,7 @@ import axios from '../plugins/axios'
  * @returns {Promise}
  */
 export function login (params) {
-  return axios.post('/login', params)
+  return axios.post('/user/login', params)
 }
 
 /**

@@ -9,15 +9,17 @@ const instance = axios.create({
 })
 instance.interceptors.request.use(
   async (config) => {
-    const tempString = Object.entries(config.params).reduce((total, curr) => {
-      total.push(`${curr[0]}=${curr[1]}`)
-      return total
-    }, [`secret=${secretKey}`])
-    tempString.push(...[`accecckey=${accessKey}`, `nonce=${Math.random().toString(36).slice(-8)}`])
-    tempString.sort()
-    const signString = await digestMessage(tempString.join('&')).then(result => window.btoa(result))
-    config.headers.sigture = signString.toUpperCase()
-    config.headers.timestamp = new Date().getTime()
+    if (config.params) {
+      const tempString = Object.entries(config.params).reduce((total, curr) => {
+        total.push(`${curr[0]}=${curr[1]}`)
+        return total
+      }, [`secret=${secretKey}`])
+      tempString.push(...[`accecckey=${accessKey}`, `nonce=${Math.random().toString(36).slice(-8)}`])
+      tempString.sort()
+      const signString = await digestMessage(tempString.join('&')).then(result => window.btoa(result))
+      config.headers.sigture = signString.toUpperCase()
+      config.headers.timestamp = new Date().getTime()
+    }
     return config
   },
   (error) => {

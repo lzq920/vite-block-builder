@@ -1,5 +1,6 @@
 <template>
   <div>
+    page add
     {{ title }}
   </div>
 </template>

@@ -1,6 +1,8 @@
+import { getToken, setToken } from '../utils/token'
+
 const state = () => {
   return {
-    token: '',
+    token: getToken(),
     avatar: '',
     username: ''
   }
@@ -8,18 +10,23 @@ const state = () => {
 const actions = {
   setUser: ({ commit }, payload) => {
     commit('setUser', payload)
+  },
+  setToken: ({ commit }, payload) => {
+    commit('setToken', payload)
+    setToken(payload)
   }
 }
 const mutations = {
   setUser: (state, payload) => {
     const {
-      token,
       avatar,
       username
     } = payload
-    state.token = token
     state.avatar = avatar
     state.username = username
+  },
+  setToken: (state, payload) => {
+    state.token = payload
   }
 }
 const getters = {

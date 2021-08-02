@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div>page list</div>
 </template>
 
 <script>

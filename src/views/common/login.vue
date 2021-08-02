@@ -6,6 +6,7 @@
 import { reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import api from '../../interfaces'
 
 export default {
   name: 'Login',
@@ -13,16 +14,15 @@ export default {
     const store = useStore()
     const router = useRouter()
     const formInline = reactive({
-      email: '',
+      username: '',
       password: ''
     })
     const handleSubmit = async () => {
-      await store.dispatch('user/setUser', {
-        token: 'token',
-        avatar: 'https://via.placeholder.com/150',
-        username: '2333'
+      const { data } = await api.login({
+        username: formInline.username,
+        password: formInline.password
       })
-      await store.dispatch('role/setRole', ['admin'])
+      await store.dispatch('user/setToken', data.token)
       router.push('/')
     }
     return {
