@@ -1,10 +1,11 @@
 export default [{
-  name: 'index',
-  path: '/',
+  name: '/pages',
+  path: '/pages',
   meta: {
     requiredAuth: true,
     role: ['admin']
   },
+  redirect: '/pages/list',
   component: () => import('../views/index.vue'),
   children: [{
     name: 'pagesList',

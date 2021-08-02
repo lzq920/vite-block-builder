@@ -1,5 +1,13 @@
 export default [
   {
+    name: 'index',
+    path: '/',
+    meta: {
+      requiredAuth: false
+    },
+    component: () => import('../views/index.vue')
+  },
+  {
     name: 'login',
     path: '/login',
     meta: {

@@ -23,9 +23,7 @@ export default {
         username: '2333'
       })
       await store.dispatch('role/setRole', ['admin'])
-      router.push({
-        name: 'index'
-      })
+      router.push('/')
     }
     return {
       formInline,

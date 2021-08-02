@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import role from './role'
 import user from './user'
+import router from './router'
 
 export default createStore({
   state () {
@@ -8,7 +9,8 @@ export default createStore({
   },
   modules: {
     role,
-    user
+    user,
+    router
   },
   getters: {},
   mutations: {},
