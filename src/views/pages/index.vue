@@ -6,7 +6,7 @@
 import { onMounted, reactive } from 'vue'
 
 export default {
-  setup () {
+  setup() {
     const data = reactive([])
     const getPageList = async () => {
     }
