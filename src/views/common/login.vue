@@ -10,7 +10,7 @@ import api from '../../interfaces'
 
 export default {
   name: 'Login',
-  setup () {
+  setup() {
     const store = useStore()
     const router = useRouter()
     const formInline = reactive({
@@ -33,4 +33,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>
