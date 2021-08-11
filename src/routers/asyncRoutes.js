@@ -6,7 +6,7 @@ export default [
       requiredAuth: true
     },
     redirect: '/pages/list',
-    component: () => import('../views/index.vue'),
+    component: () => import('../components/main-layout/index.vue'),
     children: [{
       name: 'pagesList',
       path: '/pages/list',
