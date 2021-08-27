@@ -9,7 +9,7 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'common.register',
+  name: 'CommonRegister',
   setup () {
     const register = async () => {
 

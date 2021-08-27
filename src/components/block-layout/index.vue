@@ -7,7 +7,7 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'block.layout'
+  name: 'BlockLayout'
 })
 </script>
 

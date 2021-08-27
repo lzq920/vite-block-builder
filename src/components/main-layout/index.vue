@@ -131,7 +131,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import { setTheme, setDefaultTheme, getDefaultTheme, getTheme } from '../../utils/theme'
 export default defineComponent({
-  name: 'main.layout',
+  name: 'MainLayout',
   setup () {
     const primaryColor = ref('')
     const predefineColors = ref(['#98B4D4', '#C3447A', '#BC243C', '#7FCDCD', '#E15D44', '#55B4B0', '#DFCFBE', '#9B2335', '#5B5EA6', '#EFC050', '#45B8AC', '#D65076', '#DD4124', '#009B77', '#B565A7', '#955251', '#92A8D1', '#F7CAC9'])

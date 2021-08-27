@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router'
 import api from '../../interfaces'
 
 export default defineComponent({
-  name: 'common.login',
+  name: 'CommonLogin',
   setup () {
     const store = useStore()
     const router = useRouter()

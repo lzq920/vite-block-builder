@@ -9,7 +9,7 @@
 import { reactive, toRefs, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'pages.create',
+  name: 'PagesCreate',
   setup () {
     const page = reactive({
       title: '',
