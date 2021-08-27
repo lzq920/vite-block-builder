@@ -144,6 +144,7 @@ export default defineComponent({
       if (defaultTheme) {
         setTheme(defaultTheme)
         setDefaultTheme(defaultTheme)
+        primaryColor.value = defaultTheme
       }
     })
     return {
