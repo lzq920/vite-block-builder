@@ -1,9 +1,6 @@
 <template>
   <el-container class="w-screen h-screen overflow-hidden">
-    <el-aside
-      width="200px"
-      style="background-color: rgb(238, 241, 246)"
-    >
+    <el-aside width="200px">
       <el-menu :default-openeds="['1', '3']">
         <el-submenu index="1">
           <template #title>
@@ -96,7 +93,13 @@
     </el-aside>
 
     <el-container>
-      <el-header>
+      <el-header class="flex justify-end items-center">
+        <el-color-picker
+          v-model="primaryColor"
+          show-alpha
+          :predefine="predefineColors"
+          @change="handleChangePrimaryColor"
+        />
         <el-dropdown>
           <i
             class="el-icon-setting"
@@ -114,20 +117,41 @@
       </el-header>
 
       <el-main>
-        <el-scrollbar>
-          <transition name="el-fade-in">
+        <transition name="el-fade-in">
+          <el-scrollbar>
             <router-view />
-          </transition>
-        </el-scrollbar>
+          </el-scrollbar>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
+import { setTheme, setDefaultTheme, getDefaultTheme, getTheme } from '../../utils/theme'
 export default defineComponent({
-  name: 'main.layout'
+  name: 'main.layout',
+  setup () {
+    const primaryColor = ref('')
+    const predefineColors = ref(['#98B4D4', '#C3447A', '#BC243C', '#7FCDCD', '#E15D44', '#55B4B0', '#DFCFBE', '#9B2335', '#5B5EA6', '#EFC050', '#45B8AC', '#D65076', '#DD4124', '#009B77', '#B565A7', '#955251', '#92A8D1', '#F7CAC9'])
+    const handleChangePrimaryColor = (color) => {
+      setTheme(color)
+      setDefaultTheme(color)
+    }
+    onMounted(() => {
+      const defaultTheme = getTheme() || getDefaultTheme()
+      if (defaultTheme) {
+        setTheme(defaultTheme)
+        setDefaultTheme(defaultTheme)
+      }
+    })
+    return {
+      primaryColor,
+      predefineColors,
+      handleChangePrimaryColor
+    }
+  }
 })
 </script>
 

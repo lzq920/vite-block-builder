@@ -1,7 +1,5 @@
 <template>
-  <transition name="el-fade-in">
-    <router-view />
-  </transition>
+  <router-view />
 </template>
 <script>
 export default {
