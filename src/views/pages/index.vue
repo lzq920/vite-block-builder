@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, defineComponent } from 'vue'
 
-export default {
-  setup() {
+export default defineComponent({
+  setup () {
     const data = reactive([])
     const getPageList = async () => {
     }
@@ -15,7 +15,7 @@ export default {
     })
     return { data }
   }
-}
+})
 </script>
 
 <style>

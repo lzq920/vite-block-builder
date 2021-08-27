@@ -7,7 +7,8 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: 'Register',
   setup () {
     const register = async () => {
@@ -17,7 +18,7 @@ export default {
       register
     }
   }
-}
+})
 </script>
 
 <style></style>

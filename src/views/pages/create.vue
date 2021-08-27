@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   setup () {
     const page = reactive({
       title: '',
@@ -22,7 +22,7 @@ export default {
       submit
     }
   }
-}
+})
 </script>
 
 <style>

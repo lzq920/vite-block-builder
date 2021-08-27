@@ -1,13 +1,14 @@
 <template>
-<div>
-  404
-</div>
+  <div>
+    404
+  </div>
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: '404'
-}
+})
 </script>
 
 <style scoped>

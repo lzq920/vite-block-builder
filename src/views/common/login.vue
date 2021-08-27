@@ -1,16 +1,18 @@
 <template>
-  <div @click="handleSubmit">登录</div>
+  <div @click="handleSubmit">
+    登录
+  </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import api from '../../interfaces'
 
-export default {
+export default defineComponent({
   name: 'Login',
-  setup() {
+  setup () {
     const store = useStore()
     const router = useRouter()
     const formInline = reactive({
@@ -30,7 +32,7 @@ export default {
       handleSubmit
     }
   }
-}
+})
 </script>
 
 <style>
