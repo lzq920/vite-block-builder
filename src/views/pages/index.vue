@@ -20,6 +20,7 @@
 import { onMounted, reactive, defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'pages.index',
   setup () {
     const data = reactive([])
     const getPageList = async () => {

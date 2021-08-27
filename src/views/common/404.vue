@@ -7,7 +7,7 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: '404'
+  name: 'common.404'
 })
 </script>
 
