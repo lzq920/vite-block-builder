@@ -115,7 +115,9 @@
 
       <el-main>
         <el-scrollbar>
-          <router-view />
+          <transition name="el-fade-in">
+            <router-view />
+          </transition>
         </el-scrollbar>
       </el-main>
     </el-container>
