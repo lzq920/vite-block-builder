@@ -6,7 +6,7 @@ import axios from '../plugins/axios'
  * @param {String} params.password 密码
  * @returns {Promise}
  */
-export function login(params) {
+export function login (params) {
   return axios.post('/user/login', params)
 }
 
@@ -14,7 +14,7 @@ export function login(params) {
  * @description 用户注销
  * @returns {Promise}
  */
-export function logout() {
+export function logout () {
   return axios.post('/logout')
 }
 
@@ -23,13 +23,13 @@ export function logout() {
  * @param {Object} params 用户信息
  * @returns {Promise}
  */
-export function getUserInfo(params) {
+export function getUserInfo (params) {
   return axios.get('/user/info', { params })
 }
 /**
  * @description 获取树形结构数据
- * @returns 
+ * @returns
  */
-export function getTree() {
+export function getTree () {
   return axios.get('/tree/list')
 }

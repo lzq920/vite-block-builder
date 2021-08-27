@@ -15,6 +15,8 @@
         "axios": "^0.21.1",
         "element-plus": "^1.1.0-beta.7",
         "lodash": "^4.17.20",
+        "sass": "^1.38.1",
+        "sass-loader": "^12.1.0",
         "vue": "^3.0.7",
         "vue-router": "^4.0.4",
         "vuex": "^4.0.0"
@@ -30,8 +32,6 @@
         "eslint-plugin-promise": "^5.1.0",
         "eslint-plugin-vue": "^7.15.1",
         "husky": "^7.0.1",
-        "less": "^4.0.0",
-        "less-loader": "^10.0.1",
         "lint-staged": "^11.1.2",
         "postcss": "^8.2.7",
         "tailwindcss": "^2.0.3",
