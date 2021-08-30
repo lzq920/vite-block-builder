@@ -1,8 +1,8 @@
 export const baseURL = import.meta.env.VITE_BASE_URL
 
-export const accessKey = import.meta.env.VITE_ACCESS_KEY //开发者标识
+export const accessKey = import.meta.env.VITE_ACCESS_KEY // 开发者标识
 
-export const secretKey = import.meta.env.VITE_SECRET_KEY //秘钥
+export const secretKey = import.meta.env.VITE_SECRET_KEY // 秘钥
 
 export async function digestMessage (message) {
   const msgUint8 = new TextEncoder().encode(message)

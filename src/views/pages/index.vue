@@ -12,8 +12,9 @@
 </template>
 
 <script>
-import { onMounted, reactive, defineComponent, toRefs } from 'vue'
-import BizTable from '../../components/biz/table.vue'
+import { onMounted, reactive, defineComponent, toRefs, h, resolveComponent } from 'vue'
+import BizTable from '../../components/biz/index.vue'
+
 export default defineComponent({
   name: 'PagesIndex',
   components: {
@@ -38,7 +39,16 @@ export default defineComponent({
         prop: 'id'
       }, {
         label: 'name',
-        prop: 'name'
+        prop: 'name',
+        formatter: (row) => row.name + 'formatter'
+      }, {
+        label: 'tool',
+        defaultSlot: (row) => {
+          return h(resolveComponent('el-button'), {
+            type: 'text',
+            onClick: () => alert(row.name)
+          }, '操作')
+        }
       }],
       tableConfig: {
         attributes: {},
@@ -51,16 +61,18 @@ export default defineComponent({
       }
     })
     const getPageList = async (params) => {
-      console.log(params)
       setTimeout(() => {
         state.loading = false
         state.pageInfo.total = Math.floor(Math.random() * 100)
-      }, 3000)
+      }, 1000)
     }
     onMounted(() => {
       getPageList()
     })
-    return { ...toRefs(state), getPageList }
+    return {
+      ...toRefs(state),
+      getPageList
+    }
   }
 })
 </script>

@@ -10,7 +10,20 @@
       v-for="(item,index) in columns"
       :key="index"
       v-bind="item"
-    />
+    >
+      <template
+        v-if="item.defaultSlot"
+        #default="{row}"
+      >
+        <table-item :slot-func="item.defaultSlot(row)" />
+      </template>
+      <template
+        v-if="item.headerSlot"
+        #header="{column}"
+      >
+        <table-item :slot-func="item.headerSlot(column)" />
+      </template>
+    </el-table-column>
   </el-table>
   <el-pagination
     v-if="hasPageInfo"
@@ -26,8 +39,13 @@
 
 <script>
 import { defineComponent } from 'vue'
+import TableItem from './tableItem.vue'
+
 export default defineComponent({
   name: 'BizTable',
+  components: {
+    'table-item': TableItem
+  },
   props: {
     loading: {
       required: true,
@@ -77,9 +95,11 @@ export default defineComponent({
     queryParams: {
       required: true,
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
+  emits: ['pageInfo:update'],
   setup (props, { emit }) {
     const handleSizeChange = (val) => {
       emit('pageInfo:update', {
