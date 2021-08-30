@@ -1,5 +1,6 @@
 <template>
   <el-table
+    ref="bizTable"
     v-loading="loading"
     :data="data"
     v-bind="tableConfig.attributes"
@@ -38,7 +39,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import TableItem from './tableItem.vue'
 
 export default defineComponent({
@@ -101,6 +102,9 @@ export default defineComponent({
   },
   emits: ['pageInfo:update'],
   setup (props, { emit }) {
+    const state = reactive({
+      bizTable: null
+    })
     const handleSizeChange = (val) => {
       emit('pageInfo:update', {
         total: props.pageInfo.total,
@@ -117,9 +121,46 @@ export default defineComponent({
       })
       props.queryEvent({ ...props.queryParams, ...(props.hasPageInfo ? props.pageInfo : {}) })
     }
+    const clearSelection = () => {
+      state.bizTable.clearSelection()
+    }
+    const toggleRowSelection = (row, selected) => {
+      state.bizTable.toggleRowSelection(row, selected)
+    }
+    const toggleAllSelection = () => {
+      state.bizTable.toggleAllSelection()
+    }
+    const toggleRowExpansion = (row, expanded) => {
+      state.bizTable.toggleRowExpansion(row, expanded)
+    }
+    const setCurrentRow = (row) => {
+      state.bizTable.setCurrentRow(row)
+    }
+    const clearSort = () => {
+      state.bizTable.clearSort()
+    }
+    const clearFilter = (columnKey) => {
+      state.bizTable.clearFilter(columnKey)
+    }
+    const doLayout = () => {
+      state.bizTable.doLayout()
+    }
+    const sort = (prop, order) => {
+      state.bizTable.sort(prop, order)
+    }
     return {
+      ...toRefs(state),
       handleSizeChange,
-      handleCurrentChange
+      handleCurrentChange,
+      clearSelection,
+      toggleRowSelection,
+      toggleAllSelection,
+      toggleRowExpansion,
+      setCurrentRow,
+      clearSort,
+      clearFilter,
+      doLayout,
+      sort
     }
   }
 })

@@ -2,7 +2,7 @@
     "name": "vite-block-builder",
     "version": "1.0.0",
     "scripts": {
-        "dev": "vite --mode development",
+        "dev": "vite --mode development --port 23333",
         "build": "vite build --mode production",
         "development": "vite build --mode development",
         "lint": "eslint --fix src/**/*.{js,vue,jsx}"
