@@ -8,11 +8,12 @@
         "lint": "eslint --fix src/**/*.{js,vue,jsx}"
     },
     "dependencies": {
-        "@tailwindcss/aspect-ratio": "^0.2.1",
+        "@element-plus/icons": "^0.0.11",
+        "@tailwindcss/aspect-ratio": "^0.3.0",
         "@tailwindcss/forms": "^0.3.3",
         "@tailwindcss/line-clamp": "^0.2.1",
         "@vitejs/plugin-vue-jsx": "^1.1.7",
-        "axios": "^0.21.1",
+        "axios": "^0.23.0",
         "element-plus": "^1.1.0-beta.7",
         "lodash": "^4.17.20",
         "sass": "^1.38.1",

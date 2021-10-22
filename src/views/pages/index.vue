@@ -112,12 +112,12 @@ export default defineComponent({
             return h(resolveComponent('el-button'), {
               type: 'text',
               onClick: () => alert(row.name)
-            }, '操作')
+            }, () => '操作')
           },
           headerSlot: (row) => {
             return h(resolveComponent('el-button'), {
               type: 'text'
-            }, '新增')
+            }, () => '新增')
           }
         }],
       tableConfig: {
@@ -135,7 +135,7 @@ export default defineComponent({
             }
             return ''
           },
-          height: 150,
+          height: 'auto',
           defaultSort: {
             prop: 'date',
             order: 'descending'
@@ -158,12 +158,8 @@ export default defineComponent({
         },
         events: {
           select: (selection, row) => {
-            // eslint-disable-next-line no-console
-            console.log(selection)
           },
           cellClick: (row, column, cell, event) => {
-            // eslint-disable-next-line no-console
-            console.log(row)
           }
         }
       },

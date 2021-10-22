@@ -5,7 +5,7 @@
         <el-menu :default-openeds="['1', '3']">
           <el-submenu index="1">
             <template #title>
-              <i class="el-icon-message" />导航一
+              导航一
             </template>
             <el-menu-item-group>
               <template #title>
@@ -34,7 +34,7 @@
           </el-submenu>
           <el-submenu index="2">
             <template #title>
-              <i class="el-icon-menu" />导航二
+              导航二
             </template>
             <el-menu-item-group>
               <template #title>
@@ -63,7 +63,7 @@
           </el-submenu>
           <el-submenu index="3">
             <template #title>
-              <i class="el-icon-setting" />导航三
+              导航三
             </template>
             <el-menu-item-group>
               <template #title>
