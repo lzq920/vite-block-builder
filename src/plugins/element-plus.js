@@ -5,8 +5,14 @@ import '../assets/base/element-plus.scss'
 
 const ElementPlusPlugin = {}
 ElementPlusPlugin.install = function (app, options) {
+  const globalConfig = {
+    zIndex: 3000,
+    size: 'small',
+    ...options
+  }
   app.use(ElementPlus, {
-    locale: zhLang
+    locale: zhLang,
+    ...globalConfig
   })
 }
 
