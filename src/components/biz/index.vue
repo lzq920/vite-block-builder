@@ -1,40 +1,40 @@
 <template>
   <el-table
-    ref="bizTable"
-    v-loading="loading"
-    :data="data"
-    v-bind="tableConfig.attributes"
-    class="mb-4"
-    v-on="tableConfig.events"
+      ref="bizTable"
+      v-loading="loading"
+      :data="data"
+      v-bind="tableConfig.attributes"
+      class="mb-4"
+      v-on="tableConfig.events"
   >
     <el-table-column
-      v-for="(item,index) in columns"
-      :key="index"
-      v-bind="item"
+        v-for="(item,index) in columns"
+        :key="index"
+        v-bind="item"
     >
       <template
-        v-if="item.defaultSlot"
-        #default="{row}"
+          v-if="item.defaultSlot"
+          #default="{row}"
       >
-        <table-item :slot-func="item.defaultSlot(row)" />
+        <table-item :slot-func="item.defaultSlot(row)"></table-item>
       </template>
       <template
-        v-if="item.headerSlot"
-        #header="{column}"
+          v-if="item.headerSlot"
+          #header="{column}"
       >
-        <table-item :slot-func="item.headerSlot(column)" />
+        <table-item :slot-func="item.headerSlot(column)"></table-item>
       </template>
     </el-table-column>
   </el-table>
   <el-pagination
-    v-if="hasPageInfo"
-    :current-page="pageInfo.page"
-    :page-sizes="[10, 20, 50, 100]"
-    :page-size="pageInfo.pageSize"
-    layout="total, sizes, prev, pager, next, jumper"
-    :total="pageInfo.total"
-    @size-change="handleSizeChange"
-    @current-change="handleCurrentChange"
+      v-if="hasPageInfo"
+      :current-page="pageInfo.page"
+      :page-sizes="[10, 20, 50, 100]"
+      :page-size="pageInfo.pageSize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="pageInfo.total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
   />
 </template>
 

@@ -18,7 +18,7 @@ instance.interceptors.request.use(
       tempString.sort()
       const signString = await digestMessage(tempString.join('&')).then(result => window.btoa(result))
       config.headers.sigture = signString.toUpperCase()
-      config.headers.timestamp = new Date().getTime()
+      config.headers.timestamp = `${new Date().getTime().toString()}`
     }
     return config
   },

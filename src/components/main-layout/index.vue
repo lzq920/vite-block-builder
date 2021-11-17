@@ -103,10 +103,9 @@
           @change="handleChangePrimaryColor"
         />
         <el-dropdown>
-          <i
-            class="el-icon-setting"
-            style="margin-right: 15px"
-          />
+          <el-icon>
+            <el-icon-setting></el-icon-setting>
+          </el-icon>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>查看</el-dropdown-item>
