@@ -8,7 +8,18 @@
     :has-page-info="true"
     :query-event="getPageList"
     :query-params="query"
-  />
+  >
+    <template #column>
+      <el-table-column
+        label="哈哈"
+        prop="name"
+      />
+      <el-table-column
+        label="日期"
+        prop="date"
+      />
+    </template>
+  </biz-table>
 </template>
 
 <script>

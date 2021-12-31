@@ -25,7 +25,7 @@ export default defineComponent({
         password: formInline.password
       })
       await store.dispatch('user/setToken', data.token)
-      router.push('/')
+      await router.push('/')
     }
     return {
       formInline,

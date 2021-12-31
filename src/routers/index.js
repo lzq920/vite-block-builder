@@ -25,7 +25,9 @@ router.beforeEach(async (to, from, next) => {
         await store.dispatch('user/setUser', data)
         await store.dispatch('role/setRole', data.role)
         const accessRoute = await store.dispatch('router/getRoutes')
-        router.addRoute(...accessRoute)
+        accessRoute.forEach(item => {
+          router.addRoute(item)
+        })
         next({
           path: to.path,
           replace: true

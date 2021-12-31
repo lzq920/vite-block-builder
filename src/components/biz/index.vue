@@ -1,45 +1,50 @@
 <template>
   <el-table
-      ref="bizTable"
-      v-loading="loading"
-      :data="data"
-      v-bind="tableConfig.attributes"
-      class="mb-4"
-      v-on="tableConfig.events"
+    ref="bizTable"
+    v-loading="loading"
+    :data="data"
+    v-bind="tableConfig.attributes"
+    class="mb-4"
+    v-on="tableConfig.events"
   >
-    <el-table-column
+    <template v-if="hasColumns">
+      <slot name="column" />
+    </template>
+    <template v-else>
+      <el-table-column
         v-for="(item,index) in columns"
         :key="index"
         v-bind="item"
-    >
-      <template
+      >
+        <template
           v-if="item.defaultSlot"
           #default="{row}"
-      >
-        <table-item :slot-func="item.defaultSlot(row)"></table-item>
-      </template>
-      <template
+        >
+          <table-item :slot-func="item.defaultSlot(row)" />
+        </template>
+        <template
           v-if="item.headerSlot"
           #header="{column}"
-      >
-        <table-item :slot-func="item.headerSlot(column)"></table-item>
-      </template>
-    </el-table-column>
+        >
+          <table-item :slot-func="item.headerSlot(column)" />
+        </template>
+      </el-table-column>
+    </template>
   </el-table>
   <el-pagination
-      v-if="hasPageInfo"
-      :current-page="pageInfo.page"
-      :page-sizes="[10, 20, 50, 100]"
-      :page-size="pageInfo.pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="pageInfo.total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
+    v-if="hasPageInfo"
+    :current-page="pageInfo.page"
+    :page-sizes="[10, 20, 50, 100]"
+    :page-size="pageInfo.pageSize"
+    layout="total, sizes, prev, pager, next, jumper"
+    :total="pageInfo.total"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
   />
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs, computed } from 'vue'
 import TableItem from './tableItem.vue'
 
 export default defineComponent({
@@ -101,7 +106,10 @@ export default defineComponent({
     }
   },
   emits: ['pageInfo:update'],
-  setup (props, { emit }) {
+  setup (props, { emit, slots }) {
+    const hasColumns = computed(() => {
+      return slots.column
+    })
     const state = reactive({
       bizTable: null
     })
@@ -160,7 +168,8 @@ export default defineComponent({
       clearSort,
       clearFilter,
       doLayout,
-      sort
+      sort,
+      hasColumns
     }
   }
 })
